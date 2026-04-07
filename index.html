@@ -1214,6 +1214,39 @@
             el.style.animationDelay = Math.random() * 12 + 's';
             snowfall.appendChild(el);
         }
+
+        // UTM attribution: rewrite store links with referrer/campaign params
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var utmSource = params.get('utm_source') || '';
+            var utmMedium = params.get('utm_medium') || '';
+            var utmCampaign = params.get('utm_campaign') || '';
+            var utmContent = params.get('utm_content') || '';
+
+            if (!utmSource && !utmMedium && !utmCampaign && !utmContent) return;
+
+            var playBase = 'https://play.google.com/store/apps/details?id=com.vedrixlabs.blockblastfrozen';
+            var appleBase = 'https://apps.apple.com/app/com.vedrixlabs.blockblastfrozen';
+
+            // Build Play Store referrer
+            var referrerParts = [];
+            if (utmSource) referrerParts.push('utm_source=' + utmSource);
+            if (utmMedium) referrerParts.push('utm_medium=' + utmMedium);
+            if (utmCampaign) referrerParts.push('utm_campaign=' + utmCampaign);
+            if (utmContent) referrerParts.push('utm_content=' + utmContent);
+            var playUrl = playBase + '&referrer=' + encodeURIComponent(referrerParts.join('&'));
+
+            // Build App Store campaign token
+            var appleUrl = appleBase + (utmSource ? '?ct=' + encodeURIComponent(utmSource) + '&mt=8' : '');
+
+            // Rewrite all store links on the page
+            document.querySelectorAll('a[href^="' + playBase + '"]').forEach(function(a) {
+                a.href = playUrl;
+            });
+            document.querySelectorAll('a[href^="' + appleBase + '"]').forEach(function(a) {
+                a.href = appleUrl;
+            });
+        })();
     </script>
 </body>
 </html>
