@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Static marketing website for **Block Blast Frozen**, a mobile puzzle game by **Vedrix Labs**. No build system, bundler, or framework — just plain HTML/CSS/JS served as static files.
+Static marketing website for **Block Smash**, a mobile puzzle game by **Vedrix Labs**. No build system, bundler, or framework — just plain HTML/CSS/JS served as static files.
 
 ## Architecture
 
