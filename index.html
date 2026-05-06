@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Block Smash - Crystal Puzzle Game | Vedrix Labs</title>
-    <meta name="description" content="Block Smash - a frosty crystal puzzle game. Match, Blast, Repeat on a 9x9 board with 21 shapes, powerups, and stunning ice animations. Free on Android and iOS.">
-    <link rel="icon" type="image/png" href="assets/app_icon.png">
+    <title>Block Dominion - Match, Blast, Conquer | Vedrix Labs</title>
+    <meta name="description" content="Block Dominion - a frosty crystal puzzle adventure. Play Classic endless mode or conquer 124 levels across the Snow Kingdom. Free on Android and iOS.">
+    <link rel="icon" type="image/jpeg" href="assets/app_icon.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
             --ice-rose: #C8647D;
             --ice-amber: #D2AA46;
             --ice-pink: #E07AAE;
+            --crown-gold: #F2C94C;
             --glow-blue: #A0D7F5;
             --glow-teal: #82DCC8;
             --frost-white: #E8F4FA;
@@ -86,15 +87,15 @@
         }
 
         .nav-brand img {
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
         }
 
         .nav-brand span {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 17px;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
         }
 
         .nav-cta {
@@ -134,22 +135,42 @@
         .hero-banner {
             position: relative;
             width: 100%;
-            max-width: 780px;
-            margin: 0 auto 36px;
+            max-width: 880px;
+            margin: 0 auto 28px;
         }
 
         .hero-banner img {
             width: 100%;
             height: auto;
             display: block;
-            mask-image: radial-gradient(ellipse 90% 80% at center, black 40%, transparent 72%);
-            -webkit-mask-image: radial-gradient(ellipse 90% 80% at center, black 40%, transparent 72%);
+            border-radius: 22px;
+            mask-image: radial-gradient(ellipse 95% 90% at center, black 55%, transparent 85%);
+            -webkit-mask-image: radial-gradient(ellipse 95% 90% at center, black 55%, transparent 85%);
+        }
+
+        .hero-tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--glow-blue);
+            margin-bottom: 18px;
+        }
+
+        .hero-tagline .dot {
+            width: 4px; height: 4px;
+            background: var(--crown-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--crown-gold);
         }
 
         .hero-subtitle {
             font-size: 17px;
             color: var(--text-secondary);
-            max-width: 500px;
+            max-width: 540px;
             margin: 0 auto 36px;
             line-height: 1.65;
         }
@@ -213,7 +234,7 @@
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 40px;
-            padding-bottom: 60px;
+            padding-bottom: 80px;
         }
 
         .hero-badge {
@@ -235,11 +256,136 @@
             border-radius: 50%;
         }
 
-        /* Screenshots */
+        /* ========== MODES — Two Ways to Play ========== */
+        .modes {
+            position: relative;
+            z-index: 1;
+            padding: 60px 0 80px;
+        }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .mode-card {
+            position: relative;
+            border-radius: 24px;
+            padding: 32px 30px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mode-card.conquest {
+            background:
+                radial-gradient(ellipse at 80% 0%, rgba(242, 201, 76, 0.10), transparent 60%),
+                linear-gradient(180deg, rgba(90, 170, 220, 0.05), rgba(145, 110, 210, 0.04));
+            border: 1px solid rgba(242, 201, 76, 0.22);
+        }
+
+        .mode-card.classic {
+            background: linear-gradient(180deg, rgba(60, 195, 170, 0.06), rgba(90, 170, 220, 0.03));
+            border: 1px solid rgba(60, 195, 170, 0.18);
+        }
+
+        .mode-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .mode-card.conquest:hover {
+            box-shadow: 0 16px 60px rgba(242, 201, 76, 0.16), 0 0 80px rgba(145, 110, 210, 0.08);
+            border-color: rgba(242, 201, 76, 0.4);
+        }
+
+        .mode-card.classic:hover {
+            box-shadow: 0 16px 60px rgba(60, 195, 170, 0.18);
+            border-color: rgba(60, 195, 170, 0.35);
+        }
+
+        .mode-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            align-self: flex-start;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .mode-card.conquest .mode-tag {
+            background: rgba(242, 201, 76, 0.15);
+            color: var(--crown-gold);
+            border: 1px solid rgba(242, 201, 76, 0.3);
+        }
+
+        .mode-card.classic .mode-tag {
+            background: rgba(60, 195, 170, 0.15);
+            color: var(--glow-teal);
+            border: 1px solid rgba(60, 195, 170, 0.3);
+        }
+
+        .mode-card h3 {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .mode-card .mode-sub {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            margin-bottom: 22px;
+        }
+
+        .mode-meta {
+            display: flex;
+            gap: 22px;
+            margin-top: auto;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .mode-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mode-meta-value {
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .mode-card.conquest .mode-meta-value {
+            color: var(--crown-gold);
+        }
+
+        .mode-card.classic .mode-meta-value {
+            color: var(--glow-teal);
+        }
+
+        .mode-meta-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+
+        /* ========== Screenshots — phone marquee ========== */
         .screenshots {
             position: relative;
             z-index: 1;
-            padding: 80px 0;
+            padding: 60px 0 80px;
             overflow: hidden;
         }
 
@@ -257,13 +403,22 @@
             text-align: center;
             font-size: 36px;
             font-weight: 700;
-            margin-bottom: 52px;
+            margin-bottom: 14px;
             letter-spacing: -0.02em;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 15px;
+            max-width: 540px;
+            margin: 0 auto 52px;
+            line-height: 1.65;
         }
 
         .screenshots-track {
             display: flex;
-            gap: 24px;
+            gap: 22px;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
@@ -271,17 +426,18 @@
 
         .screenshot-card {
             position: relative;
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
-            border: 1px solid rgba(90, 170, 220, 0.12);
+            border: 1px solid rgba(90, 170, 220, 0.14);
             transition: all 0.4s ease;
             flex-shrink: 0;
+            background: rgba(10, 22, 40, 0.4);
         }
 
         .screenshot-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(90, 170, 220, 0.15);
-            border-color: rgba(90, 170, 220, 0.25);
+            box-shadow: 0 20px 60px rgba(90, 170, 220, 0.18);
+            border-color: rgba(90, 170, 220, 0.3);
         }
 
         .screenshot-card img {
@@ -290,11 +446,83 @@
             display: block;
         }
 
+        /* ========== Conquest spotlight ========== */
+        .conquest-spotlight {
+            position: relative;
+            z-index: 1;
+            padding: 60px 0;
+        }
+
+        .conquest-inner {
+            display: grid;
+            grid-template-columns: 0.85fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background:
+                radial-gradient(ellipse at 0% 30%, rgba(90, 170, 220, 0.08), transparent 55%),
+                radial-gradient(ellipse at 100% 70%, rgba(145, 110, 210, 0.06), transparent 55%);
+            border: 1px solid rgba(90, 170, 220, 0.12);
+            border-radius: 28px;
+            padding: 48px 44px;
+        }
+
+        .conquest-image {
+            display: flex;
+            justify-content: center;
+        }
+
+        .conquest-image img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 60px rgba(90, 170, 220, 0.1);
+            border: 1px solid rgba(90, 170, 220, 0.18);
+        }
+
+        .conquest-content .section-label { text-align: left; }
+
+        .conquest-content h2 {
+            text-align: left;
+            margin-bottom: 16px;
+        }
+
+        .conquest-content > p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        .conquest-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .conquest-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 14px;
+            font-size: 13px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-secondary);
+        }
+
+        .conquest-pill svg {
+            width: 14px; height: 14px;
+            color: var(--ice-blue);
+        }
+
         /* Features */
         .features {
             position: relative;
             z-index: 1;
-            padding: 60px 0 80px;
+            padding: 80px 0;
         }
 
         .features-grid {
@@ -328,11 +556,11 @@
             margin-bottom: 18px;
         }
 
-        .feature-card:nth-child(1) .feature-icon { background: rgba(90, 170, 220, 0.1); }
-        .feature-card:nth-child(2) .feature-icon { background: rgba(145, 110, 210, 0.1); }
-        .feature-card:nth-child(3) .feature-icon { background: rgba(60, 195, 170, 0.1); }
-        .feature-card:nth-child(4) .feature-icon { background: rgba(200, 100, 125, 0.1); }
-        .feature-card:nth-child(5) .feature-icon { background: rgba(210, 170, 70, 0.1); }
+        .feature-card:nth-child(1) .feature-icon { background: rgba(242, 201, 76, 0.12); }
+        .feature-card:nth-child(2) .feature-icon { background: rgba(90, 170, 220, 0.1); }
+        .feature-card:nth-child(3) .feature-icon { background: rgba(145, 110, 210, 0.1); }
+        .feature-card:nth-child(4) .feature-icon { background: rgba(60, 195, 170, 0.1); }
+        .feature-card:nth-child(5) .feature-icon { background: rgba(200, 100, 125, 0.1); }
         .feature-card:nth-child(6) .feature-icon { background: rgba(224, 122, 174, 0.1); }
 
         .feature-card h3 {
@@ -666,7 +894,7 @@
             line-height: 1.6;
         }
 
-        /* Crystal Showcase - CSS blocks instead of PNG */
+        /* Crystal Showcase */
         .showcase {
             position: relative;
             z-index: 1;
@@ -758,6 +986,7 @@
         .stat-row {
             display: flex;
             gap: 28px;
+            flex-wrap: wrap;
         }
 
         .stat { text-align: center; }
@@ -850,9 +1079,9 @@
         }
 
         .footer-brand img {
-            width: 24px;
-            height: 24px;
-            border-radius: 5px;
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
         }
 
         .footer-brand span {
@@ -880,9 +1109,18 @@
         }
 
         /* Responsive */
+        @media (max-width: 900px) {
+            .modes-grid { grid-template-columns: 1fr; }
+            .conquest-inner { grid-template-columns: 1fr; gap: 36px; padding: 36px 28px; }
+            .conquest-content .section-label,
+            .conquest-content h2 { text-align: center; }
+            .conquest-pills { justify-content: center; }
+        }
+
         @media (max-width: 768px) {
             .hero { padding: 80px 0 0; }
             .hero-banner { border-radius: 14px; }
+            .hero-tagline { font-size: 11px; letter-spacing: 0.26em; }
             .features-grid { grid-template-columns: 1fr; }
             .powerups-grid { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
             .powerups .section-title { font-size: 30px; }
@@ -893,19 +1131,22 @@
             .stat-row { justify-content: center; }
             .footer-inner { flex-direction: column; gap: 20px; text-align: center; }
             .section-title { font-size: 28px; }
-            .screenshot-card img { width: 170px; }
+            .screenshot-card img { width: 180px; }
             .screenshots-track { gap: 16px; }
             .crystal-block { width: 65px; height: 65px; }
+            .mode-card h3 { font-size: 26px; }
         }
 
         @media (max-width: 480px) {
             .hero-subtitle { font-size: 15px; }
             .hero-buttons { flex-direction: column; align-items: center; }
             .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
-            .screenshot-card img { width: 140px; }
+            .screenshot-card img { width: 150px; }
             .crystal-block { width: 56px; height: 56px; border-radius: 12px; }
             .crystal-block::before { font-size: 20px; }
             .nav-cta { display: none; }
+            .mode-card { padding: 26px 22px; }
+            .mode-meta { gap: 16px; flex-wrap: wrap; }
         }
     </style>
 </head>
@@ -916,8 +1157,8 @@
     <nav>
         <div class="container">
             <a href="index.html" class="nav-brand">
-                <img src="assets/app_icon.png" alt="Block Smash">
-                <span>Block Smash</span>
+                <img src="assets/app_icon.jpg" alt="Block Dominion">
+                <span>Block Dominion</span>
             </a>
             <a href="#download" class="nav-cta">
                 Download Free
@@ -929,9 +1170,14 @@
     <section class="hero">
         <div class="container">
             <div class="hero-banner">
-                <img src="assets/feature_graphic.png" alt="Block Smash - Crystal Match Blast Repeat">
+                <img src="assets/feature_graphic.jpg" alt="Block Dominion - Match, Blast, Conquer">
             </div>
-            <p class="hero-subtitle">Place crystal ice blocks on a 9x9 board, clear lines with strategic precision, and unleash powerful blasts in this frosty puzzle adventure.</p>
+            <div class="hero-tagline">
+                <span class="dot"></span>
+                <span>Match &middot; Blast &middot; Conquer</span>
+                <span class="dot"></span>
+            </div>
+            <p class="hero-subtitle">A frosty crystal puzzle adventure. Drop pieces on a 9&times;9 board, unleash devastating blasts, and conquer 124 hand-painted levels across the Snow Kingdom.</p>
             <div class="hero-buttons">
                 <a href="https://play.google.com/store/apps/details?id=com.vedrixlabs.blockblastfrozen" class="btn btn-primary" target="_blank" rel="noopener">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>
@@ -943,10 +1189,60 @@
                 </a>
             </div>
             <div class="hero-badges">
+                <span class="hero-badge"><span class="badge-dot" style="background: var(--crown-gold);"></span> 124 Levels</span>
                 <span class="hero-badge"><span class="badge-dot" style="background: var(--ice-blue);"></span> 21 Shapes</span>
-                <span class="hero-badge"><span class="badge-dot" style="background: var(--ice-violet);"></span> Powerups</span>
+                <span class="hero-badge"><span class="badge-dot" style="background: var(--ice-violet);"></span> 2 Game Modes</span>
                 <span class="hero-badge"><span class="badge-dot" style="background: var(--ice-teal);"></span> Undo &amp; Strike</span>
                 <span class="hero-badge"><span class="badge-dot" style="background: var(--ice-amber);"></span> Free to Play</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modes -->
+    <section class="modes" id="modes">
+        <div class="container">
+            <p class="section-label">Two Ways to Play</p>
+            <h2 class="section-title">Endless or Epic. Your Call.</h2>
+            <p class="section-sub">Chase a personal best in Classic, or set off on a hand-painted campaign across icy kingdoms.</p>
+            <div class="modes-grid">
+                <div class="mode-card conquest">
+                    <span class="mode-tag">&#9819; Featured &middot; Conquest</span>
+                    <h3>Snow Kingdom</h3>
+                    <p class="mode-sub">Trace a personal trail across ice castles, glass bridges and frozen oceans. Each level is a fresh puzzle &mdash; thaw the path, beat the clock, or hit the score in N moves. Earn up to 3 stars per level.</p>
+                    <div class="mode-meta">
+                        <div class="mode-meta-item">
+                            <span class="mode-meta-value">124</span>
+                            <span class="mode-meta-label">Levels</span>
+                        </div>
+                        <div class="mode-meta-item">
+                            <span class="mode-meta-value">3</span>
+                            <span class="mode-meta-label">Goal Types</span>
+                        </div>
+                        <div class="mode-meta-item">
+                            <span class="mode-meta-value">&#11088;&#11088;&#11088;</span>
+                            <span class="mode-meta-label">Per Level</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mode-card classic">
+                    <span class="mode-tag">&#9733; Endless &middot; Classic</span>
+                    <h3>Beat Your Best</h3>
+                    <p class="mode-sub">No timers, no targets &mdash; just you, the board, and an ever-growing score. Trigger a full cinematic celebration the first time you crush your previous best.</p>
+                    <div class="mode-meta">
+                        <div class="mode-meta-item">
+                            <span class="mode-meta-value">9&times;9</span>
+                            <span class="mode-meta-label">Board</span>
+                        </div>
+                        <div class="mode-meta-item">
+                            <span class="mode-meta-value">21</span>
+                            <span class="mode-meta-label">Shapes</span>
+                        </div>
+                        <div class="mode-meta-item">
+                            <span class="mode-meta-value">&#8734;</span>
+                            <span class="mode-meta-label">Sessions</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -956,18 +1252,56 @@
         <div class="container">
             <p class="section-label">Gameplay</p>
             <h2 class="section-title">See It in Action</h2>
+            <p class="section-sub">From the home page to the kingdom map, every screen has been polished for the new look.</p>
             <div class="screenshots-track">
                 <div class="screenshot-card">
-                    <img src="assets/ss_homescreen.png" alt="Home Screen" loading="lazy">
+                    <img src="assets/ss_homescreen.jpg" alt="Home screen with Conquest and Classic modes" loading="lazy">
                 </div>
                 <div class="screenshot-card">
-                    <img src="assets/ss_gameplay.png" alt="Gameplay - Place Crystal Blocks" loading="lazy">
+                    <img src="assets/ss_kingdommap.jpg" alt="Snow Kingdom hand-painted map" loading="lazy">
                 </div>
                 <div class="screenshot-card">
-                    <img src="assets/ss_lineclear.png" alt="Ice Shatter Line Clear" loading="lazy">
+                    <img src="assets/ss_gameplay.jpg" alt="Conquest level - Frozen Bridge gameplay" loading="lazy">
                 </div>
                 <div class="screenshot-card">
-                    <img src="assets/ss_reward.png" alt="Earn Crystal Rewards" loading="lazy">
+                    <img src="assets/ss_levelcleared.jpg" alt="Level cleared with 3-star celebration" loading="lazy">
+                </div>
+                <div class="screenshot-card">
+                    <img src="assets/ss_gameover.jpg" alt="No moves left - powerup recovery" loading="lazy">
+                </div>
+                <div class="screenshot-card">
+                    <img src="assets/ss_store.jpg" alt="Diamond store - watch ads to earn" loading="lazy">
+                </div>
+                <div class="screenshot-card">
+                    <img src="assets/ss_settings.jpg" alt="Settings panel" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+    </div>
+
+    <!-- Conquest Spotlight -->
+    <section class="conquest-spotlight">
+        <div class="container">
+            <div class="conquest-inner">
+                <div class="conquest-image">
+                    <img src="assets/ss_kingdommap.jpg" alt="Snow Kingdom map - hand-painted">
+                </div>
+                <div class="conquest-content">
+                    <p class="section-label">Conquest Mode</p>
+                    <h2 class="section-title" style="text-align: left; font-size: 32px;">A World That Remembers Your Steps</h2>
+                    <p>Each kingdom is a hand-painted scroll &mdash; ice castles, glass bridges and the frozen ocean rendered at 3.5&times; the screen, with your snowman pin marking the trail you've walked. Beat a level and watch the path animate forward to your next quest.</p>
+                    <div class="conquest-pills">
+                        <span class="conquest-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5-6.5-4.5L5.5 21l2-7.5L2 9h7z"/></svg> Stars per level</span>
+                        <span class="conquest-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Score-in-time goals</span>
+                        <span class="conquest-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg> Score-in-moves goals</span>
+                        <span class="conquest-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-7h6v7"/></svg> More kingdoms coming</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -986,34 +1320,34 @@
             <h2 class="section-title">Chill Puzzles, Cool Mechanics</h2>
             <div class="features-grid">
                 <div class="feature-card">
+                    <div class="feature-icon">&#9819;</div>
+                    <h3>Conquest Campaign</h3>
+                    <p>124 hand-crafted levels across the Snow Kingdom. New kingdoms drop as pure content updates &mdash; same game, fresh worlds.</p>
+                </div>
+                <div class="feature-card">
                     <div class="feature-icon">&#10052;</div>
                     <h3>6 Crystal Colors</h3>
-                    <p>Beautiful ice crystal blocks in Blue, Red, Teal, Violet, Amber, and Pink -- each with snowflake details and frosty glow effects.</p>
+                    <p>Beautiful ice crystal blocks in Blue, Rose, Teal, Violet, Amber, and Mint &mdash; each with snowflake details and frosty glow effects.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#9889;</div>
                     <h3>Powerful Blasts</h3>
-                    <p>Trigger Cross Blast to clear entire rows and columns, or Area Blast to shatter a 3x3 zone of blocks instantly.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">&#9823;</div>
-                    <h3>21 Unique Shapes</h3>
-                    <p>Place 21 distinct piece shapes on the 9x9 board. Plan your moves to clear lines and rack up massive combo scores.</p>
+                    <p>Trigger Cross Blast to clear entire rows and columns, or Area Blast to shatter a 3&times;3 zone &mdash; with chain reactions when blasts hit blasts.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#9670;</div>
                     <h3>Diamond Economy</h3>
-                    <p>Earn diamonds through score milestones. Spend them on Undo to reverse mistakes or Strike to erase any block.</p>
+                    <p>Earn diamonds at score milestones or via rewarded ads. Spend them on Undo to reverse mistakes or Strike to erase a 3&times;3 zone.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#127942;</div>
-                    <h3>Chase High Scores</h3>
-                    <p>Beat your personal best with every game. Watch for the gold pulse when you hit a new record.</p>
+                    <h3>Cinematic High Scores</h3>
+                    <p>Beat your Classic best and the screen erupts &mdash; confetti, gold shimmer, bezier flight to the chip. The first new record per session is special.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">&#127912;</div>
                     <h3>Icy Atmosphere</h3>
-                    <p>Immerse yourself in ambient snowfall effects, crystal shatter animations, and a deep navy palette.</p>
+                    <p>Ambient snowfall, ice-shatter clears with 11 shards per cell, smooth haptics on every placement, and a deep navy palette.</p>
                 </div>
             </div>
         </div>
@@ -1049,7 +1383,7 @@
                     </div>
                     <span class="powerup-tag">Row + Column</span>
                     <h3>Cross Blast</h3>
-                    <p>Place a crystal with a cross powerup and watch it detonate -- clearing the entire intersecting row and column in a single blast.</p>
+                    <p>Place a crystal carrying a cross powerup and watch it detonate &mdash; clearing the entire intersecting row and column in a single blast.</p>
                 </div>
                 <div class="powerup-card">
                     <div class="powerup-visual">
@@ -1078,7 +1412,7 @@
                     </div>
                     <span class="powerup-tag">3x3 Zone</span>
                     <h3>Area Blast</h3>
-                    <p>Trigger a shockwave that shatters every block in a 3x3 zone. Watch the debris fly as the ice explodes outward.</p>
+                    <p>Trigger a shockwave that shatters every block in a 3&times;3 zone. Watch the debris fly as the ice explodes outward in chain reactions.</p>
                 </div>
                 <div class="powerup-card">
                     <div class="powerup-visual">
@@ -1107,9 +1441,9 @@
                             <div class="strike-shard"></div>
                         </div>
                     </div>
-                    <span class="powerup-tag">Precision</span>
-                    <h3>Lightning Strike</h3>
-                    <p>A bolt of lightning locks on and obliterates any single block. Surgical precision when every cell counts.</p>
+                    <span class="powerup-tag">Drag-to-Erase</span>
+                    <h3>Strike</h3>
+                    <p>A 3&times;3 violet eraser you drag across the board. Filled cells implode with directional shard bursts. Surgical precision when every cell counts.</p>
                 </div>
             </div>
         </div>
@@ -1138,7 +1472,7 @@
                 <div class="showcase-content">
                     <p class="section-label">The Blocks</p>
                     <h2>Simple to Learn, Hard to Master</h2>
-                    <p>Block Smash combines satisfying block puzzle mechanics with a beautiful frozen aesthetic. Drag and drop crystal pieces onto the board, complete rows and columns to shatter them with stunning ice animations, and use strategic powerups to keep your game alive.</p>
+                    <p>Block Dominion combines satisfying block puzzle mechanics with a beautiful frozen aesthetic. Drag and drop crystal pieces onto the board, complete rows and columns to shatter them with stunning ice animations, and use strategic powerups to keep your reign alive.</p>
                     <div class="stat-row">
                         <div class="stat">
                             <div class="stat-value">9x9</div>
@@ -1153,8 +1487,8 @@
                             <div class="stat-label">Crystal Colors</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-value">3</div>
-                            <div class="stat-label">Powerups</div>
+                            <div class="stat-value">124</div>
+                            <div class="stat-label">Quest Levels</div>
                         </div>
                     </div>
                 </div>
@@ -1166,8 +1500,8 @@
     <section class="cta" id="download">
         <div class="container">
             <div class="cta-box">
-                <h2>Ready to Break the Ice?</h2>
-                <p>Download Block Smash for free and start your frosty puzzle adventure today.</p>
+                <h2>Ready to Claim the Kingdom?</h2>
+                <p>Download Block Dominion for free and start your frosty puzzle conquest today.</p>
                 <div class="hero-buttons">
                     <a href="https://play.google.com/store/apps/details?id=com.vedrixlabs.blockblastfrozen" class="btn btn-primary" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302a1 1 0 010 1.38l-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 9.99l-2.302 2.302-8.634-8.634z"/></svg>
@@ -1187,7 +1521,7 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <img src="assets/app_icon.png" alt="Vedrix Labs">
+                    <img src="assets/app_icon.jpg" alt="Vedrix Labs">
                     <span>Vedrix Labs</span>
                 </div>
                 <div class="footer-links">
@@ -1195,7 +1529,7 @@
                     <a href="terms-of-use.html">Terms of Use</a>
                     <a href="mailto:vedrixlabs@gmail.com">Contact</a>
                 </div>
-                <p class="footer-copy">&copy; 2025 Vedrix Labs. All rights reserved.</p>
+                <p class="footer-copy">&copy; 2026 Vedrix Labs. All rights reserved.</p>
             </div>
         </div>
     </footer>
